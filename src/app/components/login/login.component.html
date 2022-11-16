@@ -1,0 +1,19 @@
+<main>
+    <div class="card">
+        <div class="card-header">
+            Sign in
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="username" class="form-lable">username</label>
+                    <input class="form-control" id="username" formControlName="username" type="text" />
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">sign in</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</main>

@@ -1,0 +1,46 @@
+<div class="m-3">
+    <p class="fs-1">search books</p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="search()" class="row">
+    <div class="mb-3 col">
+        <input type="text" formControlName="query" class="form-control" id="search" />
+    </div>
+    <div class="mb-3 col">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary mb-3">search</button>
+    </div>
+</form>
+<div class="row">
+    <div class="col">
+        <div class="overflow-auto" style="height:65vh;">
+            <ul class="list-group ">
+                <a *ngFor="let book of books; let i=index" routerLink="{{book.id}}" routerLinkActive="active"
+                    class="list-group-item list-group-item-action">
+                    {{book?.volumeInfo?.title}}
+                </a>
+            </ul>
+        </div>
+        <div *ngIf="books.length">
+            <nav class="m-auth">
+                <ul class="pagination">
+                    <li class="page-item" [ngClass]="{disabled: page  == 0}">
+                        <a class="page-link" (click)="navPage(false)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <p class="page-link">page {{page}}</p>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled: page  == totalPages}">
+                        <a class="page-link" (click)="navPage(true)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>

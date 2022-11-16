@@ -1,0 +1,18 @@
+<div class="m-3">
+    <p class="fs-1">wishlist</p>
+</div>
+<div class="row">
+    <div class="col h-75">
+        <div class="overflow-auto" style="height:60vh;">
+            <ul class="list-group ">
+                <a *ngFor="let book of books | keyvalue; let i=index" routerLink="{{book.key}}"
+                    routerLinkActive="active" class="list-group-item list-group-item-action">
+                    {{book?.value}}
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>

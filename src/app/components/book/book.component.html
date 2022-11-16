@@ -1,0 +1,22 @@
+<div *ngIf="book$ | async as book" class="card">
+    <div class="card-header">
+        <h5>book info</h5>
+    </div>
+    <div class="card-body">
+        <p>title: {{book.volumeInfo.title}}</p>
+        <p>description: {{book.volumeInfo.description}}</p>
+        <p *ngIf="book.volumeInfo.authors">{{book.volumeInfo.authors.length > 1? 'authers' : 'auther'}}:
+            {{book.volumeInfo.authors.join(', ')}}</p>
+        <p *ngIf="book.volumeInfo.publisher">publisher: {{book.volumeInfo.publisher}}</p>
+        <p>published date: {{book.volumeInfo.publishedDate}}</p>
+        <p>page count: {{book.volumeInfo.pageCount}}</p>
+    </div>
+    <div class="card-footer">
+        <button *ngIf="!wishlist[book.id]" (click)="wishlistHandler(book, true)" class="btn btn-primary">Add to my
+            wishlist</button>
+        <button *ngIf="wishlist[book.id]" (click)="wishlistHandler(book, false)" class="btn btn-danger">Remove from
+            my
+            wishlist</button>
+    </div>
+
+</div>
