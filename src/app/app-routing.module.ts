@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { BooksComponent } from './components/books/books.component';
 import { HomeComponent } from './components/home/home.component';
-import { WishListComponent } from './components/wishlist/wish-list.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { BookComponent } from './components/book/book.component';
 
 
@@ -18,7 +18,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'wishlist', component: WishListComponent, title: 'wishlist', children: [
+        path: 'wishlist', component: WishlistComponent, title: 'wishlist', children: [
           { path: ':bookId', component: BookComponent }
         ]
       },

@@ -12,7 +12,6 @@ export class BooksService {
   booksRes: Subject<BooksRes> = new Subject();
   books: BehaviorSubject<BooksRes> = new BehaviorSubject(<BooksRes>{ king: '', totalItems: 0, items: [] })
   searchValue: string = ''
-  // books: Book[] = []
 
   constructor(private http: HttpClient) { }
 

@@ -7,15 +7,14 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class UserService {
 
   constructor() { }
+
   private user: BehaviorSubject<string> = new BehaviorSubject('');
+  isLogin: boolean = false
 
   setUser(username: string) {
     this.isLogin = true;
     this.user.next(username);
-
   }
-
-  isLogin: boolean = false
 
   getUser(): Observable<string> {
     return this.user.asObservable()

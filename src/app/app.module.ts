@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BooksComponent } from './components/books/books.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { WishListComponent } from './components/wishlist/wish-list.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookComponent } from './components/book/book.component';
-
-
 
 
 @NgModule({
@@ -19,7 +17,7 @@ import { BookComponent } from './components/book/book.component';
     AppComponent,
     LoginComponent,
     BooksComponent,
-    WishListComponent,
+    WishlistComponent,
     HomeComponent,
     BookComponent,
   ],

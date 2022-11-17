@@ -20,10 +20,10 @@
                 </a>
             </ul>
         </div>
-        <div *ngIf="books.length">
-            <nav class="m-auth">
+        <div *ngIf="books.length" class="my-1 d-flex justify-content-center">
+            <nav>
                 <ul class="pagination">
-                    <li class="page-item" [ngClass]="{disabled: page  == 0}">
+                    <li class="page-item" [ngClass]="{disabled: page  == 1}">
                         <a class="page-link" (click)="navPage(false)" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>

@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BooksService } from 'src/app/services/books.service';
 import { map, Observable, switchMap, tap } from 'rxjs';
 import { Book } from 'src/app/model/books';
-import { WishListService } from 'src/app/services/wish-list.service';
+import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-book',
@@ -13,11 +13,12 @@ import { WishListService } from 'src/app/services/wish-list.service';
 export class BookComponent implements OnInit {
 
   book$!: Observable<Book>;
-  wishlist: { [id: string]: string } = this.wishlistService.getWishList();
+  wishlist: { [id: string]: string } = this.wishlistService.getWishlist();
+
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
-    private wishlistService: WishListService
+    private wishlistService: WishlistService
   ) { }
 
   ngOnInit(): void {
@@ -26,13 +27,12 @@ export class BookComponent implements OnInit {
         this.booksService.getBookById(params.get('bookId')!))
     )
   }
+
   wishlistHandler(book: Book, add: boolean) {
     if (add) {
-      this.wishlistService.setWish(book.id, book.volumeInfo.title);
+      this.wishlistService.setInWishlist(book.id, book.volumeInfo.title);
     } else {
-      this.wishlistService.deleteWish(book.id);
+      this.wishlistService.deleteFromWishlist(book.id);
     }
-    console.log(this.wishlist);
-
   }
 }

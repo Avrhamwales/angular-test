@@ -9,28 +9,22 @@ import { BooksService } from 'src/app/services/books.service';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent {
 
   books: Book[] = [];
   itemsInPage = 20;
-  page = 0;
+  page = 1;
   totalPages = 0;
   form = new FormGroup({
     query: new FormControl(this.booksSrevice.searchValue, Validators.required)
   })
 
-
-  constructor(
-    private router: Router,
-    public booksSrevice: BooksService,
-  ) {
+  constructor(private router: Router, public booksSrevice: BooksService) {
     this.booksSrevice.books.subscribe(res => {
       this.books = res.items
+      // cala total pages
       this.totalPages = Math.ceil(res.totalItems / this.itemsInPage);
     })
-  }
-
-  ngOnInit(): void {
   }
 
   search() {
@@ -41,7 +35,7 @@ export class BooksComponent implements OnInit {
     }
   }
   navPage(plus: boolean) {
-    const page = plus ? this.page++ : this.page--;
-    this.booksSrevice.getBooks(this.booksSrevice.searchValue, this.page)
+    const page = plus ? ++this.page : --this.page;
+    this.booksSrevice.getBooks(this.booksSrevice.searchValue, page)
   }
 }
